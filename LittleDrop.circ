@@ -68,6 +68,33 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <a name="clabel" val=""/>
     <a name="clabelup" val="east"/>
     <a name="clabelfont" val="SansSerif plain 12"/>
+    <wire from="(40,120)" to="(100,120)"/>
+    <wire from="(40,170)" to="(100,170)"/>
+    <wire from="(250,130)" to="(250,170)"/>
+    <wire from="(140,180)" to="(140,230)"/>
+    <wire from="(250,170)" to="(360,170)"/>
+    <wire from="(400,230)" to="(400,310)"/>
+    <wire from="(180,130)" to="(250,130)"/>
+    <wire from="(440,170)" to="(540,170)"/>
+    <wire from="(440,220)" to="(540,220)"/>
+    <comp lib="0" loc="(40,170)" name="Pin">
+      <a name="tristate" val="false"/>
+    </comp>
+    <comp loc="(400,170)" name="Dmux2Way"/>
+    <comp lib="0" loc="(40,120)" name="Pin">
+      <a name="tristate" val="false"/>
+    </comp>
+    <comp loc="(150,120)" name="Mux2Way"/>
+    <comp lib="0" loc="(400,310)" name="Pin">
+      <a name="facing" val="north"/>
+      <a name="tristate" val="false"/>
+    </comp>
+    <comp lib="5" loc="(540,170)" name="LED"/>
+    <comp lib="0" loc="(140,230)" name="Pin">
+      <a name="facing" val="north"/>
+      <a name="tristate" val="false"/>
+    </comp>
+    <comp lib="5" loc="(540,220)" name="LED"/>
   </circuit>
   <circuit name="HA">
     <a name="circuit" val="HA"/>
@@ -760,6 +787,57 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <a name="clabel" val=""/>
     <a name="clabelup" val="east"/>
     <a name="clabelfont" val="SansSerif plain 12"/>
+    <appear>
+      <rect fill="none" height="71" stroke="#000000" stroke-width="2" width="76" x="50" y="50"/>
+      <text font-family="SansSerif" font-size="12" text-anchor="middle" x="57" y="64">A</text>
+      <text font-family="SansSerif" font-size="12" text-anchor="middle" x="57" y="115">B</text>
+      <text font-family="SansSerif" font-size="12" text-anchor="middle" x="121" y="75">O</text>
+      <text font-family="SansSerif" font-size="12" text-anchor="middle" x="91" y="114">S</text>
+      <text font-family="SansSerif" font-size="12" text-anchor="middle" x="87" y="93">Mux2Way</text>
+      <circ-port height="8" pin="40,80" width="8" x="46" y="56"/>
+      <circ-port height="8" pin="40,190" width="8" x="46" y="106"/>
+      <circ-port height="10" pin="440,160" width="10" x="125" y="65"/>
+      <circ-port height="8" pin="130,300" width="8" x="86" y="116"/>
+      <circ-anchor facing="east" height="6" width="6" x="97" y="57"/>
+    </appear>
+    <wire from="(40,190)" to="(200,190)"/>
+    <wire from="(250,200)" to="(280,200)"/>
+    <wire from="(130,110)" to="(190,110)"/>
+    <wire from="(40,80)" to="(190,80)"/>
+    <wire from="(130,170)" to="(130,220)"/>
+    <wire from="(130,220)" to="(130,300)"/>
+    <wire from="(280,90)" to="(280,140)"/>
+    <wire from="(130,110)" to="(130,130)"/>
+    <wire from="(130,220)" to="(200,220)"/>
+    <wire from="(280,170)" to="(280,200)"/>
+    <wire from="(240,90)" to="(280,90)"/>
+    <wire from="(280,140)" to="(320,140)"/>
+    <wire from="(280,170)" to="(320,170)"/>
+    <wire from="(370,160)" to="(440,160)"/>
+    <comp loc="(220,110)" name="AND with NAND"/>
+    <comp lib="0" loc="(440,160)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="label" val="Out"/>
+    </comp>
+    <comp loc="(230,220)" name="AND with NAND"/>
+    <comp loc="(140,140)" name="NOT with NAND">
+      <a name="facing" val="north"/>
+    </comp>
+    <comp lib="0" loc="(40,190)" name="Pin">
+      <a name="tristate" val="false"/>
+      <a name="label" val="B"/>
+    </comp>
+    <comp lib="0" loc="(130,300)" name="Pin">
+      <a name="facing" val="north"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="Sel"/>
+    </comp>
+    <comp lib="0" loc="(40,80)" name="Pin">
+      <a name="tristate" val="false"/>
+      <a name="label" val="A"/>
+    </comp>
+    <comp loc="(350,170)" name="OR with NAND"/>
   </circuit>
   <circuit name="NOT with NAND">
     <a name="circuit" val="NOT with NAND"/>
@@ -946,5 +1024,64 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <comp lib="1" loc="(280,80)" name="NAND Gate">
       <a name="inputs" val="2"/>
     </comp>
+  </circuit>
+  <circuit name="Dmux2Way">
+    <a name="circuit" val="Dmux2Way"/>
+    <a name="clabel" val=""/>
+    <a name="clabelup" val="east"/>
+    <a name="clabelfont" val="SansSerif plain 12"/>
+    <appear>
+      <rect fill="none" height="70" stroke="#000000" stroke-width="2" width="81" x="50" y="50"/>
+      <text font-family="SansSerif" font-size="12" text-anchor="middle" x="62" y="65">In</text>
+      <text font-family="SansSerif" font-size="12" text-anchor="middle" x="120" y="65">A</text>
+      <text font-family="SansSerif" font-size="12" text-anchor="middle" x="120" y="115">B</text>
+      <text font-family="SansSerif" font-size="12" text-anchor="middle" x="88" y="113">S</text>
+      <text font-family="SansSerif" font-size="12" text-anchor="middle" x="90" y="90">Demux2Way</text>
+      <circ-port height="8" pin="50,150" width="8" x="46" y="56"/>
+      <circ-port height="10" pin="330,160" width="10" x="125" y="55"/>
+      <circ-port height="10" pin="330,260" width="10" x="125" y="105"/>
+      <circ-port height="8" pin="160,360" width="8" x="86" y="116"/>
+      <circ-anchor facing="east" height="6" width="6" x="87" y="57"/>
+    </appear>
+    <wire from="(130,280)" to="(160,280)"/>
+    <wire from="(90,150)" to="(90,250)"/>
+    <wire from="(240,160)" to="(330,160)"/>
+    <wire from="(130,180)" to="(190,180)"/>
+    <wire from="(130,180)" to="(130,190)"/>
+    <wire from="(160,360)" to="(160,370)"/>
+    <wire from="(240,160)" to="(240,170)"/>
+    <wire from="(130,230)" to="(130,280)"/>
+    <wire from="(160,280)" to="(160,360)"/>
+    <wire from="(90,250)" to="(200,250)"/>
+    <wire from="(250,260)" to="(330,260)"/>
+    <wire from="(50,150)" to="(90,150)"/>
+    <wire from="(160,280)" to="(200,280)"/>
+    <wire from="(90,150)" to="(190,150)"/>
+    <comp lib="0" loc="(330,160)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="A"/>
+    </comp>
+    <comp loc="(140,200)" name="NOT with NAND">
+      <a name="facing" val="north"/>
+    </comp>
+    <comp lib="0" loc="(330,260)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="B"/>
+    </comp>
+    <comp loc="(220,180)" name="AND with NAND"/>
+    <comp lib="0" loc="(160,360)" name="Pin">
+      <a name="facing" val="north"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="SEL"/>
+    </comp>
+    <comp lib="0" loc="(50,150)" name="Pin">
+      <a name="tristate" val="false"/>
+      <a name="label" val="IN"/>
+    </comp>
+    <comp loc="(230,280)" name="AND with NAND"/>
   </circuit>
 </project>
