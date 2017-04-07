@@ -216,6 +216,8 @@ f = open(f_name)
 f_out = open(f_name.split(".")[0]+".hack",'w')
 f_hex = open(f_name.split(".")[0]+".hex",'w')
 
+f_hex.write('v2.0 raw'+'\n');
+
 while True:
     s = f.readline()
 
@@ -238,6 +240,7 @@ while True:
                 bin_code = bin(int(code[1:]))[2:].zfill(16)
             except ValueError:
                 bin_code = bin(int(d_symbols[code[1:]]))[2:].zfill(16)
+	    hex_code = hex(int(bin_code,2))[2:].zfill(4)
 
         # C Instruction
         else:
@@ -260,12 +263,12 @@ while True:
                 comp = piece[0]
 
             bin_code = head + d_comp[comp] + d_dest[dest] + d_jump[jump]
-	    hex_code = hex(int(bin_code,2))[2:]
+	    hex_code = hex(int(bin_code,2))[2:].zfill(4)
 		
 	
 
     if len(bin_code) >0:
-        print bin_code
+        print hex_code,
         f_out.write(bin_code+'\n')
 	f_hex.write(hex_code + ' ')
 
